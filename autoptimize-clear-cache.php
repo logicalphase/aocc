@@ -111,7 +111,7 @@ define( 'AOCC_VERSION', '1.0.0' );
 		?> <select name="autoptimize_clear_cache_settings_option_name[maximum_autoptimize_cache_file_size_0]" id="maximum_autoptimize_cache_file_size_0">
 			<?php $selected = (isset( $this->autoptimize_clear_cache_settings_options['maximum_autoptimize_cache_file_size_0'] ) && $this->autoptimize_clear_cache_settings_options['maximum_autoptimize_cache_file_size_0'] === '128000') ? 'selected' : '' ; ?>
 			<option value="128000" <?php echo $selected; ?>>128 Megabytes</option>
-			<?php $selected = (isset( $this->autoptimize_clear_cache_settings_options['maximum_autoptimize_cache_file_size_0'] ) && $this->autoptimize_clear_cache_settings_options['maximum_autoptimize_cache_file_size_0'] === '512000') ? 'selected' : '' ; ?>
+			<?php $selected = (isset( $this->autoptimize_clear_cache_settings_options['maximum_autoptimize_cache_file_size_0'] ) && $this->autoptimize_clear_cache_settings_options['maximum_autoptimize_cache_file_size_0'] === '512000') ? 'selected' : 'selected' ; ?>
 			<option value="512000" <?php echo $selected; ?>>512 Megabytes</option>
 			<?php $selected = (isset( $this->autoptimize_clear_cache_settings_options['maximum_autoptimize_cache_file_size_0'] ) && $this->autoptimize_clear_cache_settings_options['maximum_autoptimize_cache_file_size_0'] === '764000') ? 'selected' : '' ; ?>
 			<option value="764000" <?php echo $selected; ?>>764 Megabytes</option>
@@ -132,7 +132,7 @@ if ( is_admin() )
 
  $autoptimize_clear_cache_settings_options = get_option( 'autoptimize_clear_cache_settings_option_name' ); // Array of All Options
  $maximum_autoptimize_cache_file_size = $autoptimize_clear_cache_settings_options['maximum_autoptimize_cache_file_size_0']; // Maximum Autoptimize cache file size
- print "Value is: $maximum_autoptimize_cache_file_size";
+ //print "Value is: $maximum_autoptimize_cache_file_size";
 
  if ( class_exists( 'autoptimizeCache' ) ) {
 
