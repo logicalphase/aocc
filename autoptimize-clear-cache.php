@@ -3,8 +3,8 @@
  * Plugin Name:     Autoptimize Clear Cache
  * Plugin URI:      https://github.com/hyperpress/aocc
  * Description:     Automatically clears Autoptimize cache when cache reaches selected maximum cache file size.
- * Author:          GEMServers Hosting
- * Author URI:      https://gemservers.com/
+ * Author:          Theme Surgeons
+ * Author URI:      https://themesurgeons.com/
  * License:         GPL2
  * License URI:     https://www.gnu.org/licenses/gpl-2.0.html
  * Text Domain:     autoptimize-clear-cache
@@ -119,12 +119,12 @@ define( 'AOCC_VERSION', '1.0.0' );
 	public function autoptimize_clear_cache_settings_section_info() {
 		// Retrieve current cache size value
 		$current_autoptimize_cache_stats = autoptimizeCache::stats();
-    $current_autoptimize_cache_size = round( $current_autoptimize_cache_stats[1]/1024/1024 ); // Calculate current cache size
+		$current_autoptimize_cache_size = round( $current_autoptimize_cache_stats[1]/1024/1024 ); // Calculate current cache size
 		echo "<p><strong>Current cache size:</strong> $current_autoptimize_cache_size MB</p>";
 		
 		// Retrieve maximum cache size option value
 		$autoptimize_clear_cache_settings_options = get_option( 'autoptimize_clear_cache_settings_option_name' ); // Array of All Options
-    $maximum_autoptimize_cache_file_size_0 = $autoptimize_clear_cache_settings_options['maximum_autoptimize_cache_file_size_0']; // Maximum Autoptimize cache file size
+		$maximum_autoptimize_cache_file_size_0 = $autoptimize_clear_cache_settings_options['maximum_autoptimize_cache_file_size_0']; // Maximum Autoptimize cache file size
 		$max_cache_setting = $maximum_autoptimize_cache_file_size_0;
 		echo "<p><p><strong>Current maximum cache setting:</strong> $maximum_autoptimize_cache_file_size_0 MB</p>";
 
@@ -139,11 +139,5 @@ define( 'AOCC_VERSION', '1.0.0' );
 }
 if ( is_admin() )
 	$autoptimize_clear_cache_settings = new AutoptimizeClearCacheSettings();
-
-/* 
- * Retrieve maximum cache size option value with:
- * $autoptimize_clear_cache_settings_options = get_option( 'autoptimize_clear_cache_settings_option_name' ); // Array of All Options
- * $maximum_autoptimize_cache_file_size_0 = $autoptimize_clear_cache_settings_options['maximum_autoptimize_cache_file_size_0']; // Maximum Autoptimize cache file size
- */
 
 ?>
