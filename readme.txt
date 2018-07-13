@@ -12,11 +12,11 @@ Automatically clears Autoptimize cache when cache reaches selected maximum cache
 
 == Description ==
 
-Autoptimize is a popular performance plugin for WordPress. Among other features, Autoptimize creates and builds cached versions of optimized asset files descreasing pageloading times.
+Autoptimize is a popular performance plugin for WordPress. Among other features, Autoptimize creates and builds cached versions of optimized asset files descreasing page loading times.
 
 But left unchecked, those cached files can become very large. This degrades performance, increases web server loads, and uses unuecessary amounts of disk space. That's bad.
 
-This companion plugin provides a way to set the maximum allowable cache file cache size for your site and, once that size is exceeded, automatically clear your Autoptimize cache and allow it to rebuild itself. That's good.
+This companion plugin provides a way to set the maximum allowable cache file size for your site and, once if that size is exceeded, automatically clears your Autoptimize cache and allows it to rebuild itself. That's good.
 
 == Installation ==
 
@@ -24,9 +24,12 @@ Via your WordPress admin dashboard, navigate to Plugins -> Add new and search fo
 
 You cam also manually install the plugin by downloading a copy of the plugin from the WordPress plugins repository. Then:
 
-1. Unzip the 
-2. Upload `autoptimize-clear-cache` directory to your `/wp-content/plugins/` directory
+1. Unzip the downloaded autoptimize-clear-cache.zip file
+2. Upload the unzipped folder `autoptimize-clear-cache` directory to your `/wp-content/plugins/` directory
 3. Activate the plugin through the 'Plugins' menu in WordPress
+
+Then:
+
 4. Navigate to WordPress admin dashboard -> Settings -> Autoptimize Cache Settings
 5. Select from one of the available `Maximum cache file size` options from the select menu and press the Save Changes button
 6. Please note: You obviously must have Autoptimize plugin installed for this plugin to work
@@ -35,7 +38,7 @@ You cam also manually install the plugin by downloading a copy of the plugin fro
 
 = Where can I get support for plugin? =
 
-We welcome your feedback and we're here to assist you. You can create an post in the Support Forum tab for this plugin, or you can open an issue at our Github repository at https://github.com/hyperpress/aocc/issues. Please help us better serve you by providing a concise but detailed description of the issue you need help with:
+We welcome your feedback and we're here to assist you. You can create a post in the Support Forum tab for this plugin, or you can open an issue at our Github repository at https://github.com/hyperpress/aocc/issues. Please help us better serve you by providing a concise but detailed description of the issue you need help with:
 
 1. Describe the symptoms of the issue (error, not clearing cache correctly, white screen, etc.)
 2. When did you first notice the problem?
