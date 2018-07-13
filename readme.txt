@@ -23,72 +23,39 @@ This companion plugin provides a way to set the maximum allowable cache file cac
 Via your WordPress admin dashboard, navigate to Plugins -> Add new and search for 'Autoptimize Clear Cache'. Then install the plugin and activate it in the usual way.
 
 You cam also manually install the plugin by downloading a copy of the plugin from the WordPress plugins repository. Then:
+
 1. Unzip the 
 2. Upload `autoptimize-clear-cache` directory to your `/wp-content/plugins/` directory
 3. Activate the plugin through the 'Plugins' menu in WordPress
+4. Navigate to WordPress admin dashboard -> Settings -> Autoptimize Cache Settings
+5. Select from one of the available `Maximum cache file size` options from the select menu and press the Save Changes button
+6. Please note: You obviously must have Autoptimize plugin installed for this plugin to work
 
 == Frequently Asked Questions ==
 
-= A question that someone might have =
+= Where can I get support for plugin? =
 
-An answer to that question.
+We welcome your feedback and we're here to assist you. You can create an post in the Support Forum tab for this plugin, or you can open an issue at our Github repository at https://github.com/hyperpress/aocc/issues. Please help us better serve you by providing a concise but detailed description of the issue you need help with:
 
-= What about foo bar? =
-
-Answer to foo bar dilemma.
+1. Describe the symptoms of the issue (error, not clearing cache correctly, white screen, etc.)
+2. When did you first notice the problem?
+3. Did you change anything prior to noticing the problem (installed or updated another plugin or theme. Made some other change)
+4. What make and model of computer, tablet or smartphone were you using?
+5. What operating system (OSX, Windows 10, Android, IoS)?
+6. Steps to reproduce the problem.
 
 == Screenshots ==
 
-1. This screen shot description corresponds to screenshot-1.(png|jpg|jpeg|gif). Note that the screenshot is taken from
-the /assets directory or the directory that contains the stable readme.txt (tags or trunk). Screenshots in the /assets
-directory take precedence. For example, `/assets/screenshot-1.png` would win over `/tags/4.3/screenshot-1.png`
-(or jpg, jpeg, gif).
-2. This is the second screen shot
+1. Screenshot of settings screen located in Admin -> Settings -> Autoptimize Cache Settings.
 
 == Changelog ==
 
-= 1.0 =
-* A change since the previous version.
-* Another change.
+= 1.0.0 =
+* Initial release
 
-= 0.5 =
-* List versions from most recent at top to oldest at bottom.
+== Roadmap ==
 
-== Upgrade Notice ==
+* Release first stable versions
+* Add a time based WP_Cron setting that will clear cache every few days, week, month, etc.
 
-= 1.0 =
-Upgrade notices describe the reason a user should upgrade.  No more than 300 characters.
 
-= 0.5 =
-This version fixes a security related bug.  Upgrade immediately.
-
-== Arbitrary section ==
-
-You may provide arbitrary sections, in the same format as the ones above.  This may be of use for extremely complicated
-plugins where more information needs to be conveyed that doesn't fit into the categories of "description" or
-"installation."  Arbitrary sections will be shown below the built-in sections outlined above.
-
-== A brief Markdown Example ==
-
-Ordered list:
-
-1. Some feature
-1. Another feature
-1. Something else about the plugin
-
-Unordered list:
-
-* something
-* something else
-* third thing
-
-Here's a link to [WordPress](https://wordpress.org/ "Your favorite software") and one to [Markdown's Syntax Documentation][markdown syntax].
-Titles are optional, naturally.
-
-[markdown syntax]: https://daringfireball.net/projects/markdown/syntax
-            "Markdown is what the parser uses to process much of the readme file"
-
-Markdown uses email style notation for blockquotes and I've been told:
-> Asterisks for *emphasis*. Double it up  for **strong**.
-
-`<?php code(); // goes in backticks ?>`

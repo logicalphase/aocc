@@ -14,6 +14,6 @@ if ( ! defined( 'WP_UNINSTALL_PLUGIN' ) ) {
 	exit;
 }
 
-$aocc_option_name = 'aocc_max_cache_size';
+$aocc_option_name = 'autoptimize_clear_cache_settings_option_name';
  
 delete_option( $aocc_option_name );
