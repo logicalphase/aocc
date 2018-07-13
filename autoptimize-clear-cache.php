@@ -46,7 +46,7 @@ define( 'AOCC_VERSION', '1.0.0' );
 	public function autoptimize_clear_cache_settings_add_plugin_page() {
 		add_options_page(
 			'Autoptimize Clear Cache Settings', // page_title
-			'Autoptimize Clear Cache Settings', // menu_title
+			'Autoptimize Cache Settings', // menu_title
 			'manage_options', // capability
 			'autoptimize-clear-cache-settings', // menu_slug
 			array( $this, 'autoptimize_clear_cache_settings_create_admin_page' ) // function
@@ -87,7 +87,7 @@ define( 'AOCC_VERSION', '1.0.0' );
 
 		add_settings_field(
 			'maximum_autoptimize_cache_file_size_0', // id
-			'Maximum Autoptimize cache file size', // title
+			'Maximum cache file size', // title
 			array( $this, 'maximum_autoptimize_cache_file_size_0_callback' ), // callback
 			'autoptimize-clear-cache-settings-admin', // page
 			'autoptimize_clear_cache_settings_setting_section' // section
@@ -103,22 +103,38 @@ define( 'AOCC_VERSION', '1.0.0' );
 		return $sanitary_values;
 	}
 
-	public function autoptimize_clear_cache_settings_section_info() {
-		
-	}
-
 	public function maximum_autoptimize_cache_file_size_0_callback() {
 		?> <select name="autoptimize_clear_cache_settings_option_name[maximum_autoptimize_cache_file_size_0]" id="maximum_autoptimize_cache_file_size_0">
-			<?php $selected = (isset( $this->autoptimize_clear_cache_settings_options['maximum_autoptimize_cache_file_size_0'] ) && $this->autoptimize_clear_cache_settings_options['maximum_autoptimize_cache_file_size_0'] === '128000') ? 'selected' : '' ; ?>
-			<option value="128000" <?php echo $selected; ?>>128 Megabytes</option>
-			<?php $selected = (isset( $this->autoptimize_clear_cache_settings_options['maximum_autoptimize_cache_file_size_0'] ) && $this->autoptimize_clear_cache_settings_options['maximum_autoptimize_cache_file_size_0'] === '512000') ? 'selected' : 'selected' ; ?>
-			<option value="512000" <?php echo $selected; ?>>512 Megabytes</option>
-			<?php $selected = (isset( $this->autoptimize_clear_cache_settings_options['maximum_autoptimize_cache_file_size_0'] ) && $this->autoptimize_clear_cache_settings_options['maximum_autoptimize_cache_file_size_0'] === '764000') ? 'selected' : '' ; ?>
-			<option value="764000" <?php echo $selected; ?>>764 Megabytes</option>
-			<?php $selected = (isset( $this->autoptimize_clear_cache_settings_options['maximum_autoptimize_cache_file_size_0'] ) && $this->autoptimize_clear_cache_settings_options['maximum_autoptimize_cache_file_size_0'] === '1000000') ? 'selected' : '' ; ?>
-			<option value="1000000" <?php echo $selected; ?>>1 Gigabyte</option>
+			<?php $selected = (isset( $this->autoptimize_clear_cache_settings_options['maximum_autoptimize_cache_file_size_0'] ) && $this->autoptimize_clear_cache_settings_options['maximum_autoptimize_cache_file_size_0'] === '128') ? 'selected' : '' ; ?>
+			<option value="128" <?php echo $selected; ?>>128 Megabytes</option>
+			<?php $selected = (isset( $this->autoptimize_clear_cache_settings_options['maximum_autoptimize_cache_file_size_0'] ) && $this->autoptimize_clear_cache_settings_options['maximum_autoptimize_cache_file_size_0'] === '512') ? 'selected' : '' ; ?>
+			<option value="512" <?php echo $selected; ?>>512 Megabytes</option>
+			<?php $selected = (isset( $this->autoptimize_clear_cache_settings_options['maximum_autoptimize_cache_file_size_0'] ) && $this->autoptimize_clear_cache_settings_options['maximum_autoptimize_cache_file_size_0'] === '764') ? 'selected' : '' ; ?>
+			<option value="764" <?php echo $selected; ?>>764 Megabytes</option>
+			<?php $selected = (isset( $this->autoptimize_clear_cache_settings_options['maximum_autoptimize_cache_file_size_0'] ) && $this->autoptimize_clear_cache_settings_options['maximum_autoptimize_cache_file_size_0'] === '1000') ? 'selected' : '' ; ?>
+			<option value="1000" <?php echo $selected; ?>>1 Gigabyte</option>
 		</select> <?php
-  }
+	}
+	
+	public function autoptimize_clear_cache_settings_section_info() {
+		// Retrieve current cache size value
+		$current_autoptimize_cache_stats = autoptimizeCache::stats();
+    $current_autoptimize_cache_size = round( $current_autoptimize_cache_stats[1]/1024/1024 ); // Calculate current cache size
+		echo "<p><strong>Current cache size:</strong> $current_autoptimize_cache_size MB</p>";
+		
+		// Retrieve maximum cache size option value
+		$autoptimize_clear_cache_settings_options = get_option( 'autoptimize_clear_cache_settings_option_name' ); // Array of All Options
+    $maximum_autoptimize_cache_file_size_0 = $autoptimize_clear_cache_settings_options['maximum_autoptimize_cache_file_size_0']; // Maximum Autoptimize cache file size
+		$max_cache_setting = $maximum_autoptimize_cache_file_size_0;
+		echo "<p><p><strong>Current maximum cache setting:</strong> $maximum_autoptimize_cache_file_size_0 MB</p>";
+
+		if ( class_exists('autoptimizeCache') ) {
+			if ( $current_autoptimize_cache_size > $maximum_autoptimize_cache_file_size_0 ) {
+				autoptimizeCache::clearall();
+				header("Refresh:0"); # Refresh the page so that autoptimize can create new cache files and it does breaks the page after clearall.
+		  }	
+		}
+	}
 
 }
 if ( is_admin() )
@@ -129,27 +145,5 @@ if ( is_admin() )
  * $autoptimize_clear_cache_settings_options = get_option( 'autoptimize_clear_cache_settings_option_name' ); // Array of All Options
  * $maximum_autoptimize_cache_file_size_0 = $autoptimize_clear_cache_settings_options['maximum_autoptimize_cache_file_size_0']; // Maximum Autoptimize cache file size
  */
-
- $autoptimize_clear_cache_settings_options = get_option( 'autoptimize_clear_cache_settings_option_name' ); // Array of All Options
- $maximum_autoptimize_cache_file_size = $autoptimize_clear_cache_settings_options['maximum_autoptimize_cache_file_size_0']; // Maximum Autoptimize cache file size
- //print "Value is: $maximum_autoptimize_cache_file_size";
-
- if ( class_exists( 'autoptimizeCache' ) ) {
-
-  $current_autoptimize_cache_stats = autoptimizeCache::stats();
-  $current_autoptimize_cache_size = round( $current_autoptimize_cache_stats[1]/1024 ); // Calculate current cache size
-  $maximum_autoptimize_cache_size_default = 512000; // Set default to 512 MB if not otherwise saved as option
-  
-  if ( empty( $maximum_autoptimize_cache_file_size ) ) {
-    $max_file_size_result = $maximum_autoptimize_cache_size_default;
-  } else {
-    $max_file_size_result = $maximum_autoptimize_cache_file_size;
-  }
-  if ( $current_autoptimize_cache_size > $max_file_size_result ){
-    autoptimizeCache::clearall();
-    header( "Refresh:0" ); // Refresh the page so autoptimize will rebuild cache files.
-  }
-
- }
 
 ?>
