@@ -8,7 +8,7 @@
  * License:         GPL2
  * License URI:     https://www.gnu.org/licenses/gpl-2.0.html
  * Text Domain:     autoptimize-clear-cache
- * Domain Path:     /languages
+ * Domain Path:     /languages/
  * Version:         1.0.0
  *
  * WC requires at least: 	4.0.0
@@ -17,13 +17,15 @@
  * @package								Autoptimize_Clear_Cache
  */
 
-// If this file is called directly, abort.
+ /**
+ * If this file is called directly, abort.
+ */ 
 if ( ! defined( 'WPINC' ) ) {
 	die;
 }
 
 /**
- * Currently plugin version.
+ * Current plugin version.
  */
 define( 'AOCC_VERSION', '1.0.0' );
 
@@ -32,7 +34,6 @@ define( 'AOCC_VERSION', '1.0.0' );
 *
 * @since   1.0.0
 */
-
 class AutoptimizeClearCacheSettings {
 
 	private $autoptimize_clear_cache_settings_options;
@@ -40,6 +41,7 @@ class AutoptimizeClearCacheSettings {
 	public function __construct() {
 		add_action( 'admin_menu', array( $this, 'autoptimize_clear_cache_settings_add_plugin_page' ) );
 		add_action( 'admin_init', array( $this, 'autoptimize_clear_cache_settings_page_init' ) );
+		add_action( 'plugins_loaded', array( $this, 'autoptimize_clear_cache_load_text_domain' ) );
 	}
 
 	/**
@@ -77,6 +79,15 @@ class AutoptimizeClearCacheSettings {
 				</form>
 			</div>
 		<?php
+	}
+
+	/**
+	* Function load textdomain for localization.
+	*
+	* @since   1.0.0
+	*/	
+	public function autoptimize_clear_cache_load_text_domain() {
+    load_plugin_textdomain( 'autoptimize_clear_cache', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
 	}
 
 	/**

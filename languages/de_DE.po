@@ -1,0 +1,68 @@
+# Copyright (C) 2018 Theme Surgeons
+# This file is distributed under the GPL2.
+msgid ""
+msgstr ""
+"Project-Id-Version: Autoptimize Clear Cache 1.0.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/autoptimize-clear-"
+"cache\n"
+"POT-Creation-Date: 2018-07-15 13:07:38+05:00\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2018-07-15 12:45-0500\n"
+"Language-Team: TS <ts@themesurgeons.com>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;_x:1,2c;_ex:1,2c;_n:1,2;_nx:1,2,4c;_n_noop:1,2;"
+"_nx_noop:1,2,3c;esc_attr__;esc_html__;esc_attr_e;esc_html_e;esc_attr_x:1,2c;"
+"esc_html_x:1,2c\n"
+"X-Poedit-Basepath: ..\n"
+"X-Textdomain-Support: yes\n"
+"X-Generator: Poedit 2.0.9\n"
+"Last-Translator: \n"
+"Language: de_DE\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: autoptimize-clear-cache.php:68
+msgid "Autoptimize Clear Cache Settings"
+msgstr "Optimieren Sie Cache-Einstellungen löschen"
+
+#: autoptimize-clear-cache.php:69
+msgid ""
+"Automatically clears Autoptimize cache if it exceeds the value you select."
+msgstr ""
+"Automatisches Löschen des Cache für automatische Optimierung, wenn dieser "
+"den von Ihnen ausgewählten Wert überschreitet."
+
+#: autoptimize-clear-cache.php:166
+msgid "Current cache size is %s MB"
+msgstr "Aktuelle Cachegröße ist %s MB"
+
+#: autoptimize-clear-cache.php:178
+msgid "Current maximum cache setting is %s MB"
+msgstr "Die aktuelle maximale Cache-Einstellung ist %s MB"
+
+#. Plugin Name of the plugin/theme
+msgid "Autoptimize Clear Cache"
+msgstr "Cache leeren Autoptimize"
+
+#. Plugin URI of the plugin/theme
+msgid "https://github.com/hyperpress/aocc"
+msgstr "https://github.com/hyperpress/aocc"
+
+#. Description of the plugin/theme
+msgid ""
+"A companion plugin for Autoptimize that automatically clears cache if it "
+"exceeds the selected maximum cache file size."
+msgstr ""
+"Ein Companion-Plug-in für die automatische Optimierung, das den Cache "
+"automatisch löscht, wenn die ausgewählte maximale Cachedateigröße "
+"überschritten wird."
+
+#. Author of the plugin/theme
+msgid "Theme Surgeons"
+msgstr "Thema Chirurgen"
+
+#. Author URI of the plugin/theme
+msgid "https://themesurgeons.com/"
+msgstr "https://themesurgeons.com/"
