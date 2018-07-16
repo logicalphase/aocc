@@ -37,10 +37,11 @@ define( 'AOCC_VERSION', '1.0.0' );
 class AutoptimizeClearCacheSettings {
 
 	private $autoclear_autoptimize_cache_settings_options;
-
+	
 	public function __construct() {
 		add_action( 'admin_menu', array( $this, 'autoclear_autoptimize_cache_settings_add_plugin_page' ) );
 		add_action( 'admin_init', array( $this, 'autoclear_autoptimize_cache_settings_page_init' ) );
+		add_action( 'admin_info', array( $this, 'autoclear_autoptimize_cache_settings_section_info' ) );
 		add_action( 'plugins_loaded', array( $this, 'autoclear_autoptimize_cache_load_text_domain' ) );
 	}
 
@@ -50,13 +51,13 @@ class AutoptimizeClearCacheSettings {
 	* @since   1.0.0
 	*/
 	public function autoclear_autoptimize_cache_settings_add_plugin_page() {
-		add_options_page(
-			'Autoclear Autoptimize Cache Settings', // page_title
-			'Autoptimize Cache Settings', // menu_title
-			'manage_options', // capability
-			'autoclear-autoptimize-cache-settings', // menu_slug
-			array( $this, 'autoclear_autoptimize_cache_settings_create_admin_page' ) // function
-		);
+			add_options_page(
+				'Autoclear Autoptimize Cache Settings', // page_title
+				'Autoptimize Cache Settings', // menu_title
+				'manage_options', // capability
+				'autoclear-autoptimize-cache-settings', // menu_slug
+				array( $this, 'autoclear_autoptimize_cache_settings_create_admin_page' ) // function
+			);
 	}
 
 	/**
@@ -65,20 +66,26 @@ class AutoptimizeClearCacheSettings {
 	* @since   1.0.0
 	*/
 	public function autoclear_autoptimize_cache_settings_create_admin_page() {
-		$this->autoclear_autoptimize_cache_settings_options = get_option( 'autoclear_autoptimize_cache_settings_option_name' ); ?>
-			<div class="wrap">
-				<h2><?php __( 'Autoclear Autoptimize Cache Settings', 'autoclear-autoptimize-cache' );?></h2>
-				<p><?php __( 'Automatically clears Autoptimize cache if it exceeds the value you select.', 'autoclear-autoptimize-cache' ); ?></p>
+		if ( class_exists( 'autoptimizeCache' ) ) {
+			$this->autoclear_autoptimize_cache_settings_options = get_option( 'autoclear_autoptimize_cache_settings_option_name' ); ?>
+				<div class="wrap">
+					<h2><?php _e('Autoclear Autoptimize Cache Settings', 'autoclear-autoptimize-cache' );?></h2>
+					<p><?php _e('Automatically clears Autoptimize cache if it exceeds the value you select.', 'autoclear-autoptimize-cache' ); ?></p>
 
-				<form method="post" action="options.php">
-				<?php
-						settings_fields( 'autoclear_autoptimize_cache_settings_option_group' );
-						do_settings_sections( 'autoclear-autoptimize-cache-settings-admin' );
-						submit_button();
-					?>
-				</form>
-			</div>
-		<?php
+					<form method="post" action="options.php">
+					<?php
+							settings_fields( 'autoclear_autoptimize_cache_settings_option_group' );
+							do_settings_sections( 'autoclear-autoptimize-cache-settings-admin' );
+							submit_button();
+						?>
+					</form>
+				</div>
+			<?php
+		} else {
+			echo '<div class="notice notice-error"><p>';
+			_e( 'Oh no! We can\'t find Autoptimize. Please install the Autoptimize plugin before trying to use this one.', 'autoclear-autoptimize-cache' );
+			echo '</p></div>';
+		}
 	}
 
 	/**
@@ -158,46 +165,36 @@ class AutoptimizeClearCacheSettings {
 	}
 
 	/**
-	* Function triggers autoptimizeCache stats and cache purge from Autoptimize plugin class.
+	* Function returns autoptimizeCache stats.
 	*
-	* Calculates and displays current total Autoptimize cache size and displays result.
-	* If current cache size exceeds the current saved maximum allowable cache size, purges cache.
-	* Uses header page refresh to ensure Autoptimize is set to rebuild new cache files.
+	* Calculates and displays current total Autoptimize cache size and maximum allowable cache size and displays result.
 	*
 	* @since   1.0.0
 	*/
 	public function autoclear_autoptimize_cache_settings_section_info() {
-		// Retrieve current cache size value
-		$current_autoptimize_cache_stats = autoptimizeCache::stats();
-		$current_autoptimize_cache_size = round( $current_autoptimize_cache_stats[1]/1024/1024 ); // Calculate current cache size
-		//echo '<p><strong>Current cache size:</strong> $current_autoptimize_cache_size MB</p>', 'autoclear-autoptimize-cache';
-		
-		echo '<p><strong>';
-		printf( 
-			__( 'Current cache size is %s MB', 'autoclear-autoptimize-cache' ),
-			$current_autoptimize_cache_size
-		);
-		echo '</strong></p>';
+			// Retrieve current cache size value
+			$autoclear_autoptimize_cache_stats = autoptimizeCache::stats();
+			$autoclear_autoptimize_cache_size = round( $autoclear_autoptimize_cache_stats[1]/1024/1024 ); // Calculate current cache size
+			//echo '<p><strong>Current cache size:</strong> $current_autoptimize_cache_size MB</p>', 'autoclear-autoptimize-cache';
+			//echo '<pre>'; print_r( _get_cron_array() ); echo '</pre>';
+			echo '<p><strong>';
+			printf( 
+				__( 'Current cache size is %s MB', 'autoclear-autoptimize-cache' ),
+				$autoclear_autoptimize_cache_size
+			);
+			echo '</strong></p>';
 
-		// Retrieve maximum cache size option value
-		$autoclear_autoptimize_cache_settings_options = get_option( 'autoclear_autoptimize_cache_settings_option_name' ); // Array of All Options
-		$maximum_autoptimize_cache_file_size_0 = $autoclear_autoptimize_cache_settings_options['maximum_autoptimize_cache_file_size_0']; // Maximum Autoptimize cache file size
-		$max_cache_setting = $maximum_autoptimize_cache_file_size_0;
+			// Retrieve maximum cache size option value
+			$autoclear_autoptimize_cache_settings_options = get_option( 'autoclear_autoptimize_cache_settings_option_name' ); // Array of All Options
+			$autoclear_autoptimize_cache_file_size_0 = $autoclear_autoptimize_cache_settings_options['maximum_autoptimize_cache_file_size_0']; // Maximum Autoptimize cache file size
+			$max_cache_setting = $autoclear_autoptimize_cache_file_size_0;
 
-		echo '<p><strong>';
-		printf( 
-			__( 'Current maximum cache setting is %s MB', 'autoclear-autoptimize-cache' ),
-			$maximum_autoptimize_cache_file_size_0
-		);
-		echo '</strong></p>';
-
-		// Check to see if autoptimize plugin installed and fires if conditions met.
-		if ( class_exists( 'autoptimizeCache' ) ) {
-			if ( $current_autoptimize_cache_size > $maximum_autoptimize_cache_file_size_0 ) {
-				autoptimizeCache::clearall();
-				header("Refresh:0"); # Refresh the page so that autoptimize can create new cache files and it does breaks the page after clearall.
-		  }	
-		}
+			echo '<p><strong>';
+			printf( 
+				__( 'Current maximum cache setting is %s MB', 'autoclear-autoptimize-cache' ),
+				$max_cache_setting
+			);
+			echo '</strong></p>';			
 	}
 }
 
@@ -208,5 +205,33 @@ class AutoptimizeClearCacheSettings {
 */
 if ( is_admin() )
 	$autoclear_autoptimize_cache_settings = new AutoptimizeClearCacheSettings();
+
+
+/**
+* Function compares current autoptimize cache folder total cache size.
+* If the size is greater than the saved maximum cache option value it purges cache.
+* Added a quick refresh header to ensure that autoptimize initilizes new cache build.
+*
+* @since   1.0.0
+*/
+add_action( 'init', 'autoclear_autoptimize_cache' );
+function autoclear_autoptimize_cache() {
+	if ( class_exists( 'autoptimizeCache' ) ) {
+		// Retrieve current cache size value
+		$current_autoptimize_cache_stats = autoptimizeCache::stats();
+		$current_autoptimize_cache_size = round( $current_autoptimize_cache_stats[1]/1024/1024 ); // Calculate current cache size
+		// Retrieve maximum cache size option value
+		$autoclear_autoptimize_cache_settings_options = get_option( 'autoclear_autoptimize_cache_settings_option_name' ); // Array of All Options
+		$maximum_autoptimize_cache_file_size_0 = $autoclear_autoptimize_cache_settings_options['maximum_autoptimize_cache_file_size_0']; // Maximum Autoptimize cache file size
+		$max_cache_setting = $maximum_autoptimize_cache_file_size_0;
+
+		// Check to see if autoptimize plugin installed and fires if conditions met.
+			
+		if ( $current_autoptimize_cache_size > $maximum_autoptimize_cache_file_size_0 ) {
+			autoptimizeCache::clearall();
+			header("Refresh:0"); # Refresh the page so that autoptimize can create new cache files and it does breaks the page after clearall.
+		}
+	}
+}
 
 ?>
