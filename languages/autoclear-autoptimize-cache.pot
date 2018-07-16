@@ -33,6 +33,10 @@ msgstr ""
 msgid "Automatically clear Autoptimize cache if it exceeds the value you select."
 msgstr ""
 
+#: autoclear-autoptimize-cache.php:86
+msgid "Oh no! We can\'t find Autoptimize. Please install the Autoptimize plugin before trying to use this one."
+msgstr ""
+
 #: autoclear-autoptimize-cache.php:166
 msgid "Current cache size is %s MB"
 msgstr ""

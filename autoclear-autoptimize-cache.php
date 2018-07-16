@@ -34,7 +34,7 @@ define( 'AOCC_VERSION', '1.0.0' );
 *
 * @since   1.0.0
 */
-class AutoptimizeClearCacheSettings {
+class AutoclearAutoptimizeCache {
 
 	private $autoclear_autoptimize_cache_settings_options;
 	
@@ -204,7 +204,7 @@ class AutoptimizeClearCacheSettings {
 * @since   1.0.0
 */
 if ( is_admin() )
-	$autoclear_autoptimize_cache_settings = new AutoptimizeClearCacheSettings();
+	$autoclear_autoptimize_cache_settings = new AutoclearAutoptimizeCache();
 
 
 /**

@@ -9,7 +9,7 @@
 **License:** GPLv2 or later  
 **License URI:** https://www.gnu.org/licenses/gpl-2.0.html
 
-Automatically clears Autoptimize cache if it grows larger then the selected size.
+Automatically clear Autoptimize cache if it grows larger then the allowed option.
 
 ## Description
 
@@ -29,21 +29,21 @@ You cam also manually install the plugin by downloading a copy of the plugin fro
 2.  Upload the unzipped folder `autoclear-autoptimize-cache` directory to your `/wp-content/plugins/` directory
 3.  Activate the plugin through the 'Plugins' menu in WordPress
 
-Then:
+## Plugin Settings
 
-4.  Navigate to WordPress admin dashboard -> Settings -> Autoptimize Cache Settings
-5.  Select from one of the available `Maximum cache file size` options from the select menu and press the `Save Changes` button
-6.  Please note: You obviously must have Autoptimize plugin installed for this plugin to work
+1.  Navigate to WordPress admin dashboard -> Settings -> Autoptimize Cache Settings
+2.  Select from one of the available `Maximum cache file size` options from the select menu and press the `Save Changes` button
+3.  Please note: You obviously must have Autoptimize plugin installed for this plugin to work
 
 ## Frequently Asked Questions
 
 ### But isn't clearing my cache going to slow my page loading speeds?
 
-Actually, it's good practice to occasionally clear object cache because letting the cache size become too large uses unecessary disk space and actually degrades performance, especially on shared and small VPS hosting. When you clear cache there will be a brief period where page loading time increases while it builds fresh cache. But the benefit is well worth it.
+When you clear cache there will be a brief period where page loading time increases while it builds fresh cache. But the benefit is well worth it. Allowing Autoptimize cache to grow too large uses up unecessary disk space and actually degrades performance, especially on shared and small VPS hosting.
 
 ### What is the best maximum cache size setting option for my site?
 
-That depends on a few factors, such as site traffic, using a theme with lots of options, and hosting resources available. You can experiment to find the best balance between performance and cache size. But, generally speaking, the following is a good rule of thumb:
+That depends on a few factors, such as site traffic, using a theme with lots of options, and hosting resources available. You can experiment to find the best balance between performance and cache size. Generally, the following are good assumptions:
 
 1.  128 MB for small blogging site on entry level shared hosting.
 2.  512 MB for sites running complex themes and plugins on shared or small VPS.
@@ -54,9 +54,9 @@ Again, experiment with different settings and find the best option for your part
 
 ### Do I need to have the Autoptimize plugin installed on my site for this to work?
 
-Yes. This companion plugin wouldn't be of any use without it.
+Yes. This companion plugin wouldn't be of any use without it and you'll see an admin warning notice if you try and use this plugin without first installing Autoptimize. 
 
-### Where can I get support for plugin?
+### Something isn't working right. How can I get help?
 
 We welcome your feedback and we're here to assist you. You can create a post in the Support Forum tab for this plugin, or you can open an issue at our Github repository at https://github.com/hyperpress/aocc/issues. Please help us better serve you by providing a concise but detailed description of the issue you need help with:
 
@@ -66,6 +66,10 @@ We welcome your feedback and we're here to assist you. You can create a post in 
 4.  What make and model of computer, tablet or smartphone were you using?
 5.  What operating system (OSX, Windows 10, Android, IoS)?
 6.  Steps to reproduce the problem.
+
+### My site pages load so slowly. Can you help?
+
+There are many factors that determine performance of web pages. More than ever, slow loading pages cost site owners search ranking, traffic, and revenue. We are experts on WordPress PageSpeed performance. So, if you need help, visit http://themesurgeons.com/contact. We make WordPress fast!
 
 ## Screenshots
 
