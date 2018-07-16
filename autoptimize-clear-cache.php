@@ -11,10 +11,10 @@
  * Domain Path:     /languages/
  * Version:         1.0.0
  *
- * WC requires: 		>=4.0.0
- * WC tested to: 		4.9.7
+ * WC requires: 	>=4.0.0
+ * WC tested to: 	4.9.7
  *
- * @package					Autoclear_Autoptimize_Cache
+ * @package			Autoclear_Autoptimize_Cache
  */
 
  /**
@@ -51,13 +51,13 @@ class AutoptimizeClearCacheSettings {
 	* @since   1.0.0
 	*/
 	public function autoclear_autoptimize_cache_settings_add_plugin_page() {
-			add_options_page(
-				'Autoclear Autoptimize Cache Settings', // page_title
-				'Autoptimize Cache Settings', // menu_title
-				'manage_options', // capability
-				'autoclear-autoptimize-cache-settings', // menu_slug
-				array( $this, 'autoclear_autoptimize_cache_settings_create_admin_page' ) // function
-			);
+		add_options_page(
+			'Autoclear Autoptimize Cache Settings', // page_title
+			'Autoptimize Cache Settings', // menu_title
+			'manage_options', // capability
+			'autoclear-autoptimize-cache-settings', // menu_slug
+			array( $this, 'autoclear_autoptimize_cache_settings_create_admin_page' ) // function
+		);
 	}
 
 	/**
@@ -94,7 +94,7 @@ class AutoptimizeClearCacheSettings {
 	* @since   1.0.0
 	*/	
 	public function autoclear_autoptimize_cache_load_text_domain() {
-    load_plugin_textdomain( 'autoclear_autoptimize_cache', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
+    	load_plugin_textdomain( 'autoclear_autoptimize_cache', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
 	}
 
 	/**
@@ -172,29 +172,29 @@ class AutoptimizeClearCacheSettings {
 	* @since   1.0.0
 	*/
 	public function autoclear_autoptimize_cache_settings_section_info() {
-			// Retrieve current cache size value
-			$autoclear_autoptimize_cache_stats = autoptimizeCache::stats();
-			$autoclear_autoptimize_cache_size = round( $autoclear_autoptimize_cache_stats[1]/1024/1024 ); // Calculate current cache size
-			//echo '<p><strong>Current cache size:</strong> $current_autoptimize_cache_size MB</p>', 'autoclear-autoptimize-cache';
-			//echo '<pre>'; print_r( _get_cron_array() ); echo '</pre>';
-			echo '<p><strong>';
-			printf( 
-				__( 'Current cache size is %s MB', 'autoclear-autoptimize-cache' ),
-				$autoclear_autoptimize_cache_size
-			);
-			echo '</strong></p>';
+		// Retrieve current cache size value
+		$autoclear_autoptimize_cache_stats = autoptimizeCache::stats();
+		$autoclear_autoptimize_cache_size = round( $autoclear_autoptimize_cache_stats[1]/1024/1024 ); // Calculate current cache size
+		//echo '<p><strong>Current cache size:</strong> $current_autoptimize_cache_size MB</p>', 'autoclear-autoptimize-cache';
+		//echo '<pre>'; print_r( _get_cron_array() ); echo '</pre>';
+		echo '<p><strong>';
+		printf( 
+			__( 'Current cache size is %s MB', 'autoclear-autoptimize-cache' ),
+			$autoclear_autoptimize_cache_size
+		);
+		echo '</strong></p>';
 
-			// Retrieve maximum cache size option value
-			$autoclear_autoptimize_cache_settings_options = get_option( 'autoclear_autoptimize_cache_settings_option_name' ); // Array of All Options
-			$autoclear_autoptimize_cache_file_size_0 = $autoclear_autoptimize_cache_settings_options['maximum_autoptimize_cache_file_size_0']; // Maximum Autoptimize cache file size
-			$max_cache_setting = $autoclear_autoptimize_cache_file_size_0;
+		// Retrieve maximum cache size option value
+		$autoclear_autoptimize_cache_settings_options = get_option( 'autoclear_autoptimize_cache_settings_option_name' ); // Array of All Options
+		$autoclear_autoptimize_cache_file_size_0 = $autoclear_autoptimize_cache_settings_options['maximum_autoptimize_cache_file_size_0']; // Maximum Autoptimize cache file size
+		$max_cache_setting = $autoclear_autoptimize_cache_file_size_0;
 
-			echo '<p><strong>';
-			printf( 
-				__( 'Current maximum cache setting is %s MB', 'autoclear-autoptimize-cache' ),
-				$max_cache_setting
-			);
-			echo '</strong></p>';			
+		echo '<p><strong>';
+		printf( 
+			__( 'Current maximum cache setting is %s MB', 'autoclear-autoptimize-cache' ),
+			$max_cache_setting
+		);
+		echo '</strong></p>';			
 	}
 }
 
@@ -233,5 +233,3 @@ function autoclear_autoptimize_cache() {
 		}
 	}
 }
-
-?>
