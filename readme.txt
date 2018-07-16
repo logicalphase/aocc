@@ -1,4 +1,4 @@
-# Autoptimize Clear Cache
+# Autoclear Autoptimize Cache
 
 **Contributors:** jteague  
 **Donate link:** https://watsi.org/  
@@ -21,12 +21,12 @@ This companion plugin provides a way to set the maximum allowable cache file siz
 
 ## Installation
 
-Via your WordPress admin dashboard, navigate to Plugins -> Add new and search for 'Autoptimize Clear Cache'. Then install the plugin and activate it in the usual way.
+Via your WordPress admin dashboard, navigate to Plugins -> Add new and search for 'Autoclear Autoptimize Cache'. Then install the plugin and activate it in the usual way.
 
 You cam also manually install the plugin by downloading a copy of the plugin from the WordPress plugins repository. Then:
 
-1.  Unzip the downloaded autoptimize-clear-cache.zip file
-2.  Upload the unzipped folder `autoptimize-clear-cache` directory to your `/wp-content/plugins/` directory
+1.  Unzip the downloaded autoclear-autoptimize-cache.zip file
+2.  Upload the unzipped folder `autoclear-autoptimize-cache` directory to your `/wp-content/plugins/` directory
 3.  Activate the plugin through the 'Plugins' menu in WordPress
 
 Then:
@@ -45,10 +45,10 @@ Actually, it's good practice to occasionally clear object cache because letting 
 
 That depends on a few factors, such as site traffic, using a theme with lots of options, and hosting resources available. You can experiment to find the best balance between performance and cache size. But, generally speaking, the following is a good rule of thumb:
 
-1.  128 MB - A good choice for small, low traffic site, on inexpensive shared hosting plans. Think entry level plans from Go Daddy, Hostgator, Bluehost, etc.
-2.  512 MB - If you run a small business site or a site using complex themes and plugins on mid-level shared or small VPS hosting like Webfaction or Theme Surgeons.
-3.  764 MB - If you run a WordPress Woocommerce site running a large kitchen sink theme from Envato, on a medium sized VPS Cloud hosting service, this might be a good choice.
-4.  1 GB - If you are running a process intensive, high traffic site on a large high CPU, high RAM dedicated or cloud VPS with lots of disk space, this might be just the ticket.
+1.  128 MB for small blogging site on entry level shared hosting.
+2.  512 MB for sites running complex themes and plugins on shared or small VPS.
+3.  768 MB for sites running complex themes and plugins, e-commerce, memberships on med VPS.
+4.  1 GB for large sites running complex themes, plugins, e-commerce, memberships on med to large VPS.
 
 Again, experiment with different settings and find the best option for your particular WordPress site.
 
@@ -71,7 +71,7 @@ We welcome your feedback and we're here to assist you. You can create a post in 
 
 ### 1. Screenshot of settings screen located in Admin -> Settings -> Autoptimize Cache Settings.
 
-![Screenshot of settings screen located in Admin -> Settings -> Autoptimize Cache Settings.](http://ps.w.org/autoptimize-clear-cache/assets/screenshot-1.png)
+![Screenshot of settings screen located in Admin -> Settings -> Autoptimize Cache Settings.](http://ps.w.org/autoclear-autoptimize-cache/assets/screenshot-1.png)
 
 ## Changelog
 

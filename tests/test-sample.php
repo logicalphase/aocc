@@ -2,7 +2,7 @@
 /**
  * Class SampleTest
  *
- * @package Autoptimize_Clear_Cache
+ * @package Autoclear_Autoptimize_Cache
  */
 
 /**
