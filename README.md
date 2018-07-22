@@ -1,5 +1,7 @@
 # Autoclear Autoptimize Cache
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/hyperpress/aocc.svg)](https://greenkeeper.io/)
+
 **Contributors:** jteague  
 **Donate link:** https://watsi.org/  
 **Tags:** cache, pagespeed, utilities  
